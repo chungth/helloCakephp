@@ -17,7 +17,7 @@ class PostsController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('index','view');
+		$this->Auth->allow('index','view','generate');
 	}
 /**
  * index method
@@ -61,6 +61,19 @@ class PostsController extends AppController {
 		}
 		$users = $this->Post->User->find('list',array('fields' => array('User.id', 'User.username'),));
 		$this->set(compact('users'));
+	}
+	/**getnerate */
+	public function generate(){
+		 for ($i=100000; $i<200000; $i++){
+		 	$this->Post->create();
+		 	$post = array( "Post"=> array(
+		 		"title" => 'this is generate post: '.$i,
+		 		"body" => "body of: ".$i,
+		 		"user_id" => "3"
+		 	));
+		 	$this->Post->save($post);
+		 }
+		 echo "finish!!!!";
 	}
 
 /**
