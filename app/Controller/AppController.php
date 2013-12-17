@@ -31,12 +31,16 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	public $helpers = array('Html', 'Form', 'Session');
+	
 	public $components = array(
+				'Acl',
 				'Session',
 				'Auth' => array(
+						'loginAction' =>array('controller'=>'users','action'=>'login'),
 						'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
-						'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home'),
-						'authorize' => array('Controller') // Added this line
+						'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+						'authorize' => array('Actions'=>array('actionPath'=>'controllers') ) // Added this line
 				)
 			);
 	public function isAuthorized($user) {
@@ -48,7 +52,7 @@ class AppController extends Controller {
 		return false;
 	}
 	
-	public function beforeFilter(){
-		$this->Auth->allow('index', 'view');
-	}
+ 	public function beforeFilter(){
+		$this->Auth->allow('display');
+	} 
 }

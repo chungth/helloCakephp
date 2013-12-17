@@ -105,3 +105,6 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+//load AclExtras plugin
+CakePlugin::load('AclExtras');

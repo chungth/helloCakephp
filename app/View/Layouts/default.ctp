@@ -40,6 +40,11 @@ $cakeDescription = __d('cake_dev', 'Hello CakePHP: a quick experiment');
 	<div id="container">
 		<div id="header">
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://tranhuychung.com'); ?></h1>
+			<?php
+			if ($this->Session->read('Auth.User')) {
+				echo $this->Session->read('Auth.User')['username'];
+			}
+			 ?>
 		</div>
 		<div id="content">
 
