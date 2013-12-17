@@ -30,6 +30,18 @@
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
+	Router::connect ( '/:id-:slug', // E.g. /blog/3-CakePHP_Rocks
+	array (
+			'controller' => 'posts',
+			'action' => 'view' 
+	), array (
+			// order matters since this will simply map ":id" to $articleId in your action
+			'pass' => array (
+					'id',
+					'slug' 
+			),
+			'id' => '[0-9]+' 
+	) );
 /**
  * Load all plugin routes. See the CakePlugin documentation on
  * how to customize the loading of plugin routes.

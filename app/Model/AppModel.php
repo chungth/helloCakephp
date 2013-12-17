@@ -30,4 +30,8 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+	static  function _friendlySlug($title=NULL){
+		return Inflector::slug(strtolower($title),'-');
+	}
+
 }

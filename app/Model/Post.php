@@ -51,4 +51,7 @@ class Post extends AppModel {
 			'order' => ''
 		)
 	);
+	public function beforeSave($options=array()){
+		$this->data['Post']['slug'] = parent::_friendlySlug($this->data['Post']['title']);
+	}
 }
