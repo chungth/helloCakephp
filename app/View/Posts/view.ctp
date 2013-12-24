@@ -1,37 +1,13 @@
 <div class="posts view">
-<h2><?php echo __('Post'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($post['Post']['id']); ?>
+	<h2><?php echo h($post['Post']['title']); ?></h2>
+	<?php echo $post['Post']['body']; ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Title'); ?></dt>
-		<dd>
-			<?php echo h($post['Post']['title']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Body'); ?></dt>
-		<dd>
-			<?php echo h($post['Post']['body']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($post['Post']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($post['Post']['modified']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('User Id'); ?></dt>
-		<dd>
-			<?php echo h($post['Post']['user_id']); ?>
-			&nbsp;
-		</dd>
-	</dl>
+
+	<?php
+	
+	// include the element first before getting block in the views or layout file.
+	echo $this->element ( 'comments' );
+	?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
@@ -42,8 +18,5 @@
 		<li><?php echo $this->Html->link(__('New Post'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>
-  
-<?php 
-// include the element first before getting block in the views or layout file.
-    echo $this->element('comments');
-?>
+
+

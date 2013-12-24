@@ -30,10 +30,11 @@ $cakeDescription = __d('cake_dev', 'Hello CakePHP: a quick experiment');
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
-
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
+		echo $this->Html->script('prettify.js');
+		echo $this->Html->css('prettify.css');
+		//echo $this->fetch('meta');
+		//echo $this->fetch('css');
+		//echo $this->fetch('script');
 	?>
 </head>
 <body>
