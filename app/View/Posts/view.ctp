@@ -42,3 +42,8 @@
 		<li><?php echo $this->Html->link(__('New Post'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>
+  
+<?php 
+// include the element first before getting block in the views or layout file.
+    echo $this->element('comments');
+?>
